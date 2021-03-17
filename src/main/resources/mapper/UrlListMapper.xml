@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengx.dao.UrlListDao">
+    <sql id="userField">
+        a.id as "id",
+        a.urlname as "urlname",
+        a.createdate as "createdate"
+    </sql>
+<!--   获取所有用户 -->
+<insert id="insert" parameterType="com.hengx.model.UrlList">
+    <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO url_list(urlname,createdate) VALUES(#{urlname},#{createdate})
+
+</insert>
+
+
+    <select id="findOne" parameterType="com.hengx.model.UrlList" resultType="com.hengx.model.UrlList">
+        select * from url_list a
+        where 1=1
+        order by #{urlname} limit 0,1
+    </select>
+
+<!--    增加分页查询-->
+
+    <select id="total" resultType="int">
+        select count(1) from url_list
+    </select>
+    <!--    增加分页查询 PageHelper插件-->
+    <select id="list" resultType="com.hengx.model.UrlList">
+        select * from url_list a  order by a.createdate DESC
+    </select>
+</mapper>

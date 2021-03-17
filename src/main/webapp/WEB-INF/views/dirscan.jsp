@@ -11,7 +11,7 @@
 
 <div style="width: 800px;margin: 0px auto; text-align: center">
     <form  method="post" action="/demo/sec/scaning">
-        <input class="form-control" type="text" name="url" placeholder="请输入要探测的url...">
+        <input class="form-control" type="text" name="urlname" placeholder="请输入要探测的url...">
         <input type="submit" value="探测">
 
     </form>

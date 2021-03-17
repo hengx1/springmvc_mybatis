@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengx.dao.DirListDao">
+    <sql id="userField">
+        a.id as "id",
+        a.urlid as "urlid",
+        a.dirurl as "dirurl",
+        a.status as "status"
+    </sql>
+</mapper>
