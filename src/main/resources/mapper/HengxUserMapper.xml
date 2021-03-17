@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hengx.dao.HengxUserDao">
+    <sql id="userField">
+        a.id as "id",
+        a.age as "age",
+        a.name as "name",
+        a.password as "password"
+    </sql>
+<!--   获取所有用户 -->
+    <select id="findAll" resultType="com.hengx.model.HengxUser">
+        select
+        <include refid="userField" />
+        from hengx_user as a;
+
+    </select>
+
+    <select id="findById"  parameterType="int" resultType="com.hengx.model.HengxUser">
+    SELECT *
+    FROM hengx_user a
+    WHERE id = #{id}
+    </select>
+    <select id="findOne" parameterType="com.hengx.model.HengxUser" resultType="com.hengx.model.HengxUser">
+        select * from hengx_user a
+        where 1=1
+        order by #{name} limit 0,1
+<!--        <if test="name !='' and name!= null">-->
+<!--            AND FIND_IN_SET(a.name,#{name})-->
+<!--        </if>-->
+    </select>
+
+<!--    增加分页查询-->
+    <select id="list" resultType="com.hengx.model.HengxUser">
+        select * from hengx_user
+        <if test="start != null and start >=0 and count != null">
+            limit #{start},#{count}
+        </if>
+    </select>
+    <select id="total" resultType="int">
+        select count(1) from hengx_user
+    </select>
+    <!--    增加分页查询 PageHelper插件-->
+    <select id="list1" resultType="com.hengx.model.HengxUser">
+        select * from hengx_user
+    </select>
+</mapper>
