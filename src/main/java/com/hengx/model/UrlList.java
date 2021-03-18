@@ -6,7 +6,7 @@ public class UrlList {
 
     private int id;
     private String urlname;
-    private Date createdate;
+    private String createdate;
 
     public int getId() {
         return id;
@@ -24,11 +24,11 @@ public class UrlList {
         this.urlname = urlname;
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 }

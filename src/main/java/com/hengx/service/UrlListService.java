@@ -16,7 +16,9 @@ public interface UrlListService {
     List<UrlList> findOne(UrlList urlList);
 
     //分页
-    List<UrlList> list(Page page);
+    List<UrlList> list();
     int total();
+
+    void runThread(int id,String url);
 
 }

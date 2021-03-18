@@ -8,10 +8,10 @@
         a.createdate as "createdate"
     </sql>
 <!--   获取所有用户 -->
-<insert id="insert" parameterType="com.hengx.model.UrlList">
-    <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
-        SELECT LAST_INSERT_ID()
-    </selectKey>
+<insert id="insert" keyProperty="id" keyColumn="id" useGeneratedKeys="true" parameterType="com.hengx.model.UrlList">
+<!--    <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">-->
+<!--        SELECT LAST_INSERT_ID()-->
+<!--    </selectKey>-->
     INSERT INTO url_list(urlname,createdate) VALUES(#{urlname},#{createdate})
 
 </insert>

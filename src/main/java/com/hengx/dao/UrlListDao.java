@@ -25,7 +25,7 @@ public interface UrlListDao {
     List<UrlList> findOne(UrlList urlList);
 
 //    分页
-    public List<UrlList> list(Page page);
+    public List<UrlList> list();
     public int total();
 
 }

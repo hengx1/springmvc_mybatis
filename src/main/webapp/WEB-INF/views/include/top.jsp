@@ -26,7 +26,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="<%=request.getContextPath()%>/sec/index">目录扫描</a></li>
-                        <li><a href="#">EJB</a></li>
+                        <li><a href="<%=request.getContextPath()%>/sec/urllist">扫描结果</a></li>
                         <li><a href="#">Jasper Report</a></li>
                         <li class="divider"></li>
                         <li><a href="#">分离的链接</a></li>
