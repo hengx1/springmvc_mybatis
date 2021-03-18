@@ -36,7 +36,7 @@
                     <td>${c.id}</td>
                     <td>${c.urlname}</td>
                     <td>${c.createdate}</td>
-                    <td><a href="<%=path %>/user/edit/${c.id}">edit</a></td>
+                    <td><a href="<%=path %>/sec/scanresult/${c.id}">查看</a></td>
                     <td><a href="">delete</a></td>
                 </tr>
             </c:forEach>

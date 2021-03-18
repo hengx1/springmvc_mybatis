@@ -8,4 +8,14 @@
         a.dirurl as "dirurl",
         a.status as "status"
     </sql>
+
+
+    <select id="total" resultType="int">
+        select count(1) from dir_list
+    </select>
+    <!--    增加分页查询 PageHelper插件-->
+    <select id="list" resultType="com.hengx.model.DirList" parameterType="com.hengx.model.DirList">
+        select * from dir_list a  where a.urlid = #{urlid}
+    </select>
+
 </mapper>

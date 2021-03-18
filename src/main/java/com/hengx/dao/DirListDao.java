@@ -2,6 +2,7 @@ package com.hengx.dao;
 
 import com.hengx.model.DirList;
 import com.hengx.model.HengxUser;
+import com.hengx.model.UrlList;
 import com.hengx.util.Page;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
@@ -19,5 +20,8 @@ public interface DirListDao {
     @Insert("INSERT INTO dir_list(urlid,dirurl,status) VALUES(#{urlid},#{dirurl}, #{status})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(DirList dirList);
+
+    public List<DirList> list(DirList dirList);
+    public int total();
 
 }

@@ -13,4 +13,7 @@ import java.util.List;
 public interface DirListService {
     int insert(DirList dirList);
 
+    List<DirList> list(DirList dirList);
+    int total();
+
 }

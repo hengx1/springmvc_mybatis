@@ -3,7 +3,9 @@ package com.hengx.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.hengx.model.DirList;
 import com.hengx.model.UrlList;
+import com.hengx.service.DirListService;
 import com.hengx.service.UrlListService;
 import com.hengx.util.Page;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class SecController {
 
     @Resource
     private UrlListService urlListService;
+
+    @Resource
+    private DirListService dirListService;
 
     @GetMapping("/index")
     public String index(Model model){
@@ -53,10 +58,19 @@ public class SecController {
         return "urlList";
     }
 
-    @RequestMapping("/scanresult")
-    public String scanresult(Model model){
-
+    @RequestMapping("/scanresult/{urlid}")
+    public String scanresult(@PathVariable int urlid,Model model){
+        DirList dirList = new DirList();
+        dirList.setUrlid(urlid);
+        List<DirList> dirlist = dirListService.list(dirList);
+        model.addAttribute("dirlist",dirlist);
         return "scanresult";
+    }
+
+    @RequestMapping("del/{id}")
+    public String del(){
+
+        return "urlList";
     }
 //    class Runner1 implements  Runnable{
 //        private int id;
