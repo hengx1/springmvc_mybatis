@@ -18,7 +18,7 @@ public interface UrlListService {
     //分页
     List<UrlList> list();
     int total();
-
+    int delete(int id);
     void runThread(int id,String url);
 
 }

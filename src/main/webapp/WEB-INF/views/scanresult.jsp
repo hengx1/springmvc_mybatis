@@ -21,6 +21,7 @@
 <div style="width: 500px;margin: 0px auto; text-align: center">
     <table class="table table-striped" align="center" >
         <caption>扫描结果</caption>
+        <a>返回</a>
         <thead>
             <tr>
                 <td>urlid</td>

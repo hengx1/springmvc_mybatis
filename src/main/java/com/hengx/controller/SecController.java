@@ -68,8 +68,14 @@ public class SecController {
     }
 
     @RequestMapping("del/{id}")
-    public String del(){
-
+    public String del(@PathVariable int id,Model model){
+        urlListService.delete(id);
+        Page page = new Page();
+        PageHelper.offsetPage(page.getStart(),5);
+        List<UrlList> urlList = urlListService.list();
+        int total = (int) new PageInfo<>(urlList).getTotal();
+        page.caculateLast(total);
+        model.addAttribute("urllist",urlList);
         return "urlList";
     }
 //    class Runner1 implements  Runnable{

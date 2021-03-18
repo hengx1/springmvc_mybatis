@@ -47,6 +47,11 @@ public class UrlListServiceImpl implements UrlListService {
     }
 
     @Override
+    public int delete(int id) {
+        return urlListDao.delete(id);
+    }
+
+    @Override
     public void runThread(int id, String url)  {
 
         LinkedList<String> sites = new LinkedList<String>();
