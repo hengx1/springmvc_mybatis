@@ -148,4 +148,17 @@ public class HengxUserController {
         return userDTO;
     }
 
+    @RequestMapping("/json")
+    public String testjson(){
+        return "json";
+    }
+
+    @RequestMapping("/testJson")
+    @ResponseBody
+    public HengxUser testJson(@RequestBody HengxUser user){
+        //打印接受的json数据
+        System.out.println(user);
+        return user;
+    }
+
 }
