@@ -11,8 +11,14 @@ import com.hengx.util.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +35,40 @@ public class SecController {
     @GetMapping("/index")
     public String index(Model model){
         return  "dirscan";
+    }
+    @GetMapping("/fileupload")
+    public String fileupload(Model model){
+        return  "fileupload";
+    }
+
+    @RequestMapping(value = "/fileUpload",produces = {"text/plain;charset=utf-8","text/html;charset=utf-8"})
+    @ResponseBody
+    public String fileUpload(@RequestParam("file") CommonsMultipartFile file) throws IOException {
+        long startTime = System.currentTimeMillis();
+        String fileName = file.getOriginalFilename();
+        System.out.println("fileName="+file.getOriginalFilename());
+//        System.out.println("contentType="+file.getContentType());
+//        System.out.println("getName="+file.getName());
+//        System.out.println("getBytes="+file.getBytes());
+//        System.out.println("getFileItem="+file.getFileItem());
+        String path = "E://upload//"+new Date().getTime()+file.getOriginalFilename();
+        String suffix = fileName.substring(fileName.lastIndexOf("."));
+//        String[] writelist= {".jpg",".jpeg",".png"};
+        List<String> write = new ArrayList<>();
+        write.add(".jpg");
+        write.add(".jpeg");
+        write.add(".png");
+        if(!write.contains(suffix)){
+            return "上传失败，不允许上传非图片";
+        }
+        File newFile = new File(path);
+
+        file.transferTo(newFile);
+        long endTime = System.currentTimeMillis();
+
+        System.out.println("运行时间：="+String.valueOf(endTime -startTime)+"ms");
+        return "success";
+
     }
 
     @RequestMapping("/scaning")
